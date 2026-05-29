@@ -13,9 +13,9 @@ Currently learning:
 - Nested Loops
 
 Leraning from:
-Bro Code Youtube Channel
-Understanding Concepts with Chatgpt 
-Practicepython.org
+- Bro Code Youtube Channel
+- Understanding Concepts with Chatgpt 
+- Practicepython.org
 
 Goal:
 Improve problem-solving skills and build projects consistently using Python.
