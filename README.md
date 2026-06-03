@@ -2,7 +2,7 @@
 
 This repository contains my Python learning journey and practice problems.
 
-Currently learning:
+Currently Studied:
 - Variables
 - Strings
 - User Input
@@ -11,6 +11,7 @@ Currently learning:
 - Logical Operators
 - For Loops
 - Nested Loops
+- Dictionary 
 
 Leraning from:
 - Bro Code Youtube Channel
