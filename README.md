@@ -19,4 +19,4 @@ Leraning from:
 - Practicepython.org
 
 Goal:
-Improve problem-solving skills and build projects consistently using Python.
+Learn and Improve problem-solving skills and build projects consistently using Python.
