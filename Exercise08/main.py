@@ -85,11 +85,13 @@
 
 # Task 5 : word frequency Counter
 
-user_input = input("Enter any word or sentence you like:  ")
-words = []
+user_input = input("Enter repeated words of you choice:  ")
 
-for i in range(len(user_input)):
-    if user_input[i] == " ":
-        words.append(user_input)
-
+word_list = user_input.split(" ")   ## this split() is a method of list which is used to split the sentence by specifying the seprater
+words= {}
+for word in word_list:
+    if not words.get(word):
+        words[word] = 1
+    else:
+        words[word] += 1
 print(words)
