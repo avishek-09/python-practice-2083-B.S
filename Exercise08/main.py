@@ -85,13 +85,56 @@
 
 # Task 5 : word frequency Counter
 
-user_input = input("Enter repeated words of you choice:  ")
+# user_input = input("Enter repeated words of you choice:  ")
 
-word_list = user_input.split(" ")   ## this split() is a method of list which is used to split the sentence by specifying the seprater
-words= {}
-for word in word_list:
-    if not words.get(word):
-        words[word] = 1
+# word_list = user_input.split(" ")   ## this split() is a method of list which is used to split the sentence by specifying the seprater
+# words= {}
+# for word in word_list:
+#     if not words.get(word):
+#         words[word] = 1
+#     else:
+#         words[word] += 1
+# print(words)
+
+# While Loop Practice Session 
+
+#Task 6: Countdown Timer
+# import time
+# user_input = int(input("Enter starting number for countdown: "))
+# while user_input > 1:
+#     user_input -= 1 
+#     time.sleep(0.5)
+#     print(user_input)
+#     time.sleep(0.5)
+# else:
+#     print("🚀 Blast Off! ")
+
+# Task 7: Password Login System 
+
+# username = "admin"
+# password = "admin123"
+
+# attempt = 3 
+# while True:
+#     user_input = input("Enter password: ")
+#     attempt -= 1
+#     if attempt >= 0:
+#         if user_input == password:
+#             print("--Login Sucessfull!--")
+#             break
+#         else:
+#             print(f"--Invalid Password. Yor have {attempt} attempts left.--")
+#     else:
+#         print("Account Blocked!!")
+#         break
+
+# Task 8 : Sum until zero 
+sum = 0
+while True:
+    user_input= int(input("Enter a number for sum: "))
+    if user_input != 0:
+        sum += user_input 
     else:
-        words[word] += 1
-print(words)
+        break
+
+print(sum)
