@@ -132,3 +132,138 @@ def calculate_tax( amount, tax_rate = 0.13):
 
 tax, total  = calculate_tax(12000)
 print(f"Tax : {tax} \nTotal pay : {total}")
+
+
+
+# Task 3: Keyword Arguments
+
+def book_ticket(flight, passenger, date, seat="Economy"):
+    print("-------------------")
+    print(f"Flight No. {flight} \nPassenger : {passenger} \nDate; {date}\nSeat: {seat}")
+    print("-------------------")
+
+book_ticket("D03", 25, "15th June")
+book_ticket(flight = "E02",passenger = 22 , date= "14th June", seat = "Business Class")
+book_ticket("A03", 23, "17th June", seat = "PJ")
+
+
+
+# Task 4: *args practice
+#--1--
+def multiply_all(*numbers):
+    if not numbers: 
+        return 0
+    
+    mul = 1
+    for number in numbers:
+        mul *= number
+    return mul 
+
+product = multiply_all()
+print(product)
+
+#--2--
+def longest_word(*words):
+    if not words: 
+        return " "
+    
+    longest = words[0]
+    for word in words: 
+        if len(word) > len(longest):
+            longest = word
+
+    return longest
+
+long = longest_word("avishek", "ranjan", "aeroplane", "ronaldo", "lakshman")
+print(long)
+
+#--3--
+def average_grade(student_name, *grades):
+    print("-----------")
+    print(f"Namaste {student_name}.")
+    total = 0 
+    for grade in grades:
+        total += grade
+        avg = (total / len(grades))
+    print(f"Your average grade is: {avg:2f}")
+    print("------------")
+
+average_grade("Steve", 85,65,90,72,63,88)
+
+
+
+# Task 5: **kwargs practice 
+
+#--1--
+def build_profile(**infos):
+    print("--------")
+    for key,value in infos.items():
+        print(f"{key} : {value}")
+    print("--------")
+build_profile(name = "ram", age =30, city = "pokhara", profession = "teacher")
+build_profile(name = "hari", age =32, city = "kathmandu", profession = "doctor")
+build_profile(name = "sita", age =28, city = "chitwan", profession = "rapper")
+build_profile(name = "gita", age = 35, city = "butwal", profession = "engineer")
+build_profile(name = "joe", age =40, city = "parsa", profession = "broker")
+build_profile(name = "steve", age =25, city = "sarlahi", profession = "pharmacist")
+
+
+# Task 6: Combined *args and **kwargs
+def restaurant_order(waiter_name, *dishes, **speical_instruction):
+    print("-------")
+    print(f"Hello {waiter_name}!")
+    print("I want to order: ")
+    for dish in dishes:
+        print(dish)
+    print("where")
+    for key, value in speical_instruction.items():
+        print(f"{key} : {value}")
+    print("------")
+
+restaurant_order( "Jonathan", "Milk Tea","Sandwitch","Jhol MOMO","Pizza", tea = "No sugar",MOMO = "less sour", Pizza = "Extra Cheese" )
+    
+
+
+# Task 7: Multiple Return Values 
+def statistics(*numbers):
+    sum(numbers)
+    average = sum / len(numbers)
+    min(numbers) 
+    max(numbers) 
+    result = (sum , average, min, max)
+    return result
+
+statistics(12,2,15)
+
+
+# Task 8: Early return/guard clauses
+
+#--1--
+def safe_divide(a,b):
+    if b == 0:
+        return "Not Divisible by 0"
+    
+    div = a / b
+    return div
+
+division = safe_divide(10, 0)
+print(division)
+
+#--2--
+def get_grade(score):
+    if score < 0 or score > 100:
+        return "INVALID!"
+    
+    elif score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+    
+grade = get_grade(102)
+print(grade)
