@@ -68,6 +68,7 @@ print(f"The factorial is {result}")
 
 
 
+
 # Task 1: Simple Fuction with return 
 #--1--
 def square(n):
@@ -109,6 +110,7 @@ print(area)
 
 
 
+
 # Task 2: Default Parameters
 #--1--
 def power(base, exponent = 2):
@@ -135,6 +137,7 @@ print(f"Tax : {tax} \nTotal pay : {total}")
 
 
 
+
 # Task 3: Keyword Arguments
 
 def book_ticket(flight, passenger, date, seat="Economy"):
@@ -148,10 +151,11 @@ book_ticket("A03", 23, "17th June", seat = "PJ")
 
 
 
+
 # Task 4: *args practice
 #--1--
 def multiply_all(*numbers):
-    if not numbers: 
+    if len(numbers) == 0:
         return 0
     
     mul = 1
@@ -197,15 +201,13 @@ average_grade("Steve", 85,65,90,72,63,88)
 #--1--
 def build_profile(**infos):
     print("--------")
+    print(f"Type : {type(infos)}")
     for key,value in infos.items():
         print(f"{key} : {value}")
     print("--------")
 build_profile(name = "ram", age =30, city = "pokhara", profession = "teacher")
 build_profile(name = "hari", age =32, city = "kathmandu", profession = "doctor")
-build_profile(name = "sita", age =28, city = "chitwan", profession = "rapper")
-build_profile(name = "gita", age = 35, city = "butwal", profession = "engineer")
-build_profile(name = "joe", age =40, city = "parsa", profession = "broker")
-build_profile(name = "steve", age =25, city = "sarlahi", profession = "pharmacist")
+
 
 
 # Task 6: Combined *args and **kwargs
@@ -224,16 +226,35 @@ restaurant_order( "Jonathan", "Milk Tea","Sandwitch","Jhol MOMO","Pizza", tea = 
     
 
 
-# Task 7: Multiple Return Values 
-def statistics(*numbers):
-    sum(numbers)
-    average = sum / len(numbers)
-    min(numbers) 
-    max(numbers) 
-    result = (sum , average, min, max)
-    return result
 
-statistics(12,2,15)
+# Task 7: Multiple Return Values 
+
+# ---1---
+def statistics(numbers):
+    total = sum(numbers)
+    average = total / len(numbers)
+    minimum = min(numbers)
+    maximum = max(numbers)
+    return total, average, minimum , maximum
+
+total, average, minimum , maximum = statistics([25,45,5,2,8,4,1])
+print(total)
+print(average)
+print(minimum)
+print(maximum)
+
+# --2--
+def string_infos(s):
+    length = len(s)
+    first_character = s[0]
+    last_character = s[-1]
+    return length, first_character, last_character
+
+length, first_character, last_character = string_infos("Aeroplane Flies High")
+print(length)
+print(first_character)
+print(last_character)
+
 
 
 # Task 8: Early return/guard clauses
@@ -266,4 +287,88 @@ def get_grade(score):
         return "F"
     
 grade = get_grade(102)
-print(grade)
+print(grade )
+
+
+
+# Task 9: Variable Scope 
+
+total_calls = 0
+def call_increment():
+    global total_calls 
+    total_calls += 1
+
+call_increment()
+call_increment()
+call_increment()
+call_increment()
+call_increment()
+
+print(total_calls)
+
+
+
+# Task 10 : Calculator Formation
+
+def calculator(a , b, operation):
+    if operation == "add":
+        return a + b
+    elif operation == "substract":
+        return a - b
+    elif operation == "multiply":
+        return a * b
+    elif operation == "divide":
+        return a / b
+    else: 
+        return "INVALID OPERATION!"
+    
+num1 = int(input("Enter first num: "))
+num2 = int(input("Enter second num: "))
+op = input("Enter which operation you want to perform(add, substract, multiply , divide): ")
+
+result = calculator(num1, num2, op)
+print(f"The result of {op} is : \n{result}")
+
+
+
+# Task 11 : Flexible Filter Function
+def filter_students(**kwargs):
+    students = [
+        {"name": "avishek", "grade": "A", "age": 20, "city": "kathmnadu"},
+        {"name": "krishna", "grade": "B", "age": 20, "city": "Hetuda"},
+        {"name": "Ghanashyam", "grade": "A", "age": 20, "city": "Chitwan"},
+        {"name": "Steve", "grade": "A", "age": 21, "city": "Dharan"},
+    ]
+    result = []
+    for student in students: 
+        match = True
+        for key,value in kwargs.items():
+            if student.get(key) != value:
+                match = False
+                break
+            
+            if match == True:
+                result.append(student)
+
+    return result
+
+print(filter_students(grade = "A", age = 20))
+
+
+# Task 12: Fucntion Documnetation 
+def temperature_converter(value, to ="C"):
+    """
+    this function has two parameters
+    one parameter takes value for conversion 
+    and the other parameter specifies which conversion is needed to be done
+    """
+    if to == "C":
+        return ((value-32)/1.8)
+    elif to == "F":
+        return ((value*1.8)+32)
+    else:
+        return "INVALDI CONVERSION!"
+    
+print(temperature_converter(30,"A"))
+
+
