@@ -39,6 +39,7 @@ ran.shuffle(names)
 print(name)
 print(names)
 
+#------------------------------------------------------------------------------------------------------
 
 # Higher Order Function : that takes fuction as an argument and may also return a fuction 
 def double(num):
@@ -50,7 +51,8 @@ def higher_order(func, value):
 result = higher_order(double, 5)
 print(result)
 
-# map(): an crazy higher order function
+#--------------------------------------------------------------------------------------------------------------
+# map():a crazy higher order function
 
 def square(num):
     return num * num
@@ -74,10 +76,64 @@ reverse_names = list(map(reverse, names))
 print(names)
 print(reverse_names)
 
-# Lamda Function 
+#---------------------------------------------------------------------------------------------------------------
+# Lambda Function 
 
 numbers = [12,5,4,8,6,20,45,80]
 new_list = list(map(lambda num : num*num, numbers))
 
 print(numbers)
 print(new_list)
+
+#----------------------------------------------------------------------------------------------------------------
+# FILTER
+
+numbers = [12,5,4,8,6,20,45,80]
+even_num = list(filter(lambda num : num%2 == 0, numbers))
+print(numbers)
+print(even_num)
+
+#-----------------------------------------------------------------------------------------------------------------
+# Sorting 
+
+numbers = [12,5,4,8,6,20,45,80]
+sort_num = sorted(numbers, reverse = True)
+print(numbers)
+print(sort_num)
+
+students = {
+    "Avishek" : 50,
+    "Steve" : 55,
+    "Jhonatha" : 60,
+    "Elon Musk" : 53,
+}
+sort_std = sorted(students, key=students.get, reverse = True )
+print(students)
+print(sort_std)
+
+infos = [
+    {"name": "avishek", "age" : 23},
+    {"name": "shrawan", "age" :  30},
+    {"name": "pawan", "age" : 25},
+    {"name": "gajendra", "age" : 40},
+]
+
+sort_info1 = sorted(infos, key = lambda info : info.get("name"))
+sort_info2 = sorted(infos, key = lambda info : info.get("age"))
+
+print(infos)
+print(sort_info1)
+print(sort_info2)
+
+#-------------------------------------------------------------------------------------------------------------------
+# Recursion: the function that calls itself 
+
+def factorial(n):
+    if n <=1:
+        return 1
+    
+    return n * factorial(n-1)
+
+num = int(input("Enter any number to calculate it's factorial : "))
+fact = factorial(num)
+print(f"The factorial of {num} is {fact}") 
