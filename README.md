@@ -12,6 +12,9 @@ Currently Studied:
 - For Loops
 - Nested Loops
 - Dictionary 
+- Function 
+- Higher Order Fucntions
+- map(), filter(), sorted()
 
 Leraning from:
 - Bro Code Youtube Channel
@@ -19,4 +22,4 @@ Leraning from:
 - Practicepython.org
 
 Goal:
-Learn and Improve problem-solving skills and build projects consistently using Python.
+Learn and Improve problem-solving skills and build projects consistently using Python. Growing gradually towards being an AI engineer, taking one step at a time.
