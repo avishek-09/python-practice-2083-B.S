@@ -1,0 +1,4 @@
+ERROR: Disk full
+INFO:Backup completed
+ERROR: Connection Timeout
+WARNING: Low memory

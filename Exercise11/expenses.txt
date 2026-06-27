@@ -1,0 +1,3 @@
+Description: petrol , Amount: Rs.1000
+Description: lunch, Amount: Rs.500 
+Description: shopping , Amount: Rs.2500 

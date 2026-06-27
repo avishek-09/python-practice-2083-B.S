@@ -1,0 +1,6 @@
+Ram Bahadur , 10 , Physics 
+Hari Adhikari , 15, Management 
+Shyam Gurung , 22, Boilogy 
+Sita Baral , 23 , Management 
+Anuz Poudel , 01 , Physics
+Jessie Pinkman , 69, biology
