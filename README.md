@@ -15,6 +15,8 @@ Currently Studied:
 - Function 
 - Higher Order Fucntions
 - map(), filter(), sorted()
+- File Handling
+- CSV files handling
 
 Leraning from:
 - Bro Code Youtube Channel
