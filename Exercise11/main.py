@@ -1,4 +1,5 @@
-##---Write Method in File handling---
+# _____________________FILE HANDLING____________________________
+ #---Write Method in File handling---
 with open("random.txt", "w") as file:
     file.write("Hello There! I am file handling.\n")
     file.write("Hello python! I am having fun.")
@@ -80,3 +81,72 @@ with open("students.txt", "a") as file:
     course = input("enter course(physics, biology, management)")
     file.write(f"{name}, {roll_no}, {course}")
 
+
+#-----------------------------------------
+# Q.no. 7: Attendence Tracker
+with open("attendence.txt", "w") as file:
+    file.write("Date: 25th January | Present: Ram, Hari, Shyam")
+
+with open("attendence.txt", "a") as file: 
+    date = input("Enter the date: ")
+    present_student = input("Names of present student: ")
+    
+    file.write(f"\n Date: {date} | Present: {present_student}")
+
+
+
+
+#_______________________C S V____________________________
+import csv
+with open("students.csv", "w", newline = "") as file: 
+    writer = csv.writer(file)
+    writer.writerow(["Roll" , "Name", "Course", "Marks"])
+    writer.writerow([101, "Ram"])
+    writer.writerow([102, "Hari"])
+
+with open("students.csv", "a", newline = "") as file:
+    writer = csv.writer(file)
+    writer.writerow([103, "Sita"])
+
+search_id = input("Enter ID: ")
+with open("students.csv", "r") as file: 
+    reader = csv.reader(file)
+    for row in reader: 
+        if row[0] == search_id:
+            print(row)
+
+#------------------------------
+# Q.no. 1: Student Record Management
+
+import csv
+MENU = """
+1. Add Student record
+2. View all student records
+3. Search by Roll Number
+4. exit
+"""
+while True: 
+    print(MENU)
+    user_choice = input("Enter your choice(1,2,3): ")
+    if user_choice == "1":
+        with open("students.csv", "a", newline = "") as file:
+            roll_no = input("Enter Roll No: ") 
+            name = input("Enter name: ")
+            course = input("Enter course: ")
+            marks = input("Enter Marks: ")
+            writer = csv.writer(file)
+            writer.writerow([roll_no, name, course, marks])
+    elif user_choice == "2":
+        with open("students.csv", "r") as file:
+            reader = csv.reader(file)
+            for row in reader: 
+                print(row)
+    elif user_choice == "3": 
+        keyword = input("Enter the Roll No of student whose data you need: ")
+        with open("students.csv", "r") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if row[0] == keyword: 
+                    print(row)
+    elif user_choice == "4":
+        break
