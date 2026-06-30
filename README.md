@@ -1,6 +1,7 @@
 # python-practice-2083-B.S
 
 This repository contains my Python learning journey and practice problems.
+Feel Free to go through it, as a beginner you will find this repository really useful..
 
 Currently Studied:
 - Variables
@@ -17,6 +18,7 @@ Currently Studied:
 - map(), filter(), sorted()
 - File Handling
 - CSV files handling
+- OOP (while few topics are still left to cover)
 
 Leraning from:
 - Bro Code Youtube Channel
