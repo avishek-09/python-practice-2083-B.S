@@ -19,6 +19,7 @@ Currently Studied:
 - File Handling
 - CSV files handling
 - OOP (while few topics are still left to cover)
+- Tkinter
 
 Leraning from:
 - Bro Code Youtube Channel
