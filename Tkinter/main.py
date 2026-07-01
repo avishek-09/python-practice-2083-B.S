@@ -1,47 +1,47 @@
 import tkinter as tk 
 
 ## ----Random Demo to undestand basics of tkinter-------
-# root = tk.Tk()
-# root.title("Demo")
-# root.geometry("600x400")
+root = tk.Tk()
+root.title("Demo")
+root.geometry("600x400")
 
-# label1 = tk.Label(text = "Hello World!")
-# label2 = tk.Label(text = "I am learning Tkinter :)")
-# label3 = tk.Label(text = "Python is really getting interesting.")
-# label1.pack()
-# label2.pack()
-# label3.pack()
+label1 = tk.Label(text = "Hello World!")
+label2 = tk.Label(text = "I am learning Tkinter :)")
+label3 = tk.Label(text = "Python is really getting interesting.")
+label1.pack()
+label2.pack()
+label3.pack()
 
 # root.mainloop()
 
 ## ----Project for KM to Meter Converter------
 
-# root = tk.Tk()
-# root.title("KM to M Converter")
-# root.geometry("600x400")
+root = tk.Tk()
+root.title("KM to M Converter")
+root.geometry("600x400")
 
-# def convert():
-#     km = float(input.get())
-#     meter = km * 1000
-#     result_box.delete(0, tk.END)
-#     result_box.insert(0, meter)
+def convert():
+    km = float(input.get())
+    meter = km * 1000
+    result_box.delete(0, tk.END)
+    result_box.insert(0, meter)
 
-# label1 = tk.Label(text = "Enter distance in KM: ", font = ("Arial", 13))
-# label1.place(x = 130 , y = 30)
+label1 = tk.Label(text = "Enter distance in KM: ", font = ("Arial", 13))
+label1.place(x = 130 , y = 30)
 
-# input_box = tk.Entry()
-# input_box.place(x = 300, y = 33)
+input_box = tk.Entry()
+input_box.place(x = 300, y = 33)
 
-# button = tk.Button(text = "Convert", command = convert)
-# button.place(x = 430 , y = 29)
+button = tk.Button(text = "Convert", command = convert)
+button.place(x = 430 , y = 29)
 
-# label2 = tk.Label(text = "In Meter: ", font = ("Arial", 13))
-# label2.place(x= 224 , y = 65)
+label2 = tk.Label(text = "In Meter: ", font = ("Arial", 13))
+label2.place(x= 224 , y = 65)
 
-# result_box = tk.Entry()
-# result_box.place(x = 300, y= 68)
+result_box = tk.Entry()
+result_box.place(x = 300, y= 68)
 
-# root.mainloop()
+root.mainloop()
 
 
 
@@ -57,7 +57,7 @@ def register_to_csv():
 
     if not (username or email or password):
         messagebox.showerror("Validation Error", "All fields are required.")
-        
+
     with open("register.csv", "a", newline = "") as file: 
         writer = csv.writer(file)
         writer.writerow([username, email, password])
