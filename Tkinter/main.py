@@ -57,12 +57,31 @@ def register_to_csv():
 
     if not (username or email or password):
         messagebox.showerror("Validation Error", "All fields are required.")
+        return
 
     with open("register.csv", "a", newline = "") as file: 
         writer = csv.writer(file)
         writer.writerow([username, email, password])
 
     login_widget()
+
+def login():
+    global label1_input_box, label2_input_box
+    username = label1_input_box.get()
+    password = label2_input_box.get()
+    if not (username  or password):
+        messagebox.showerror("Validation Error", "All fields are required.")
+        return
+    with open("register.csv", "r") as file: 
+        reader = csv.reader(file)
+        for row in reader:
+            if row[0] == username and row[2] == password:
+                messagebox.showinfo("Login Successful", "Welcome Back.")
+                dashboard_widget()
+                break    
+        else:
+            messagebox.showerror("Validation Error", "Accound not registered.")
+
 
 def clear_widget():
     for widget in root.winfo_children():
@@ -72,7 +91,7 @@ def login_widget():
     clear_widget()
 
     global label1_input_box, label2_input_box
-
+    
     title_label = tk.Label(text = "Login To Your Account", font = ("arial", 20))
     title_label.pack()
 
@@ -88,13 +107,12 @@ def login_widget():
     label2_input_box = tk.Entry(width = 30, show = "*")
     label2_input_box.place(x=353, y= 125) 
 
-    login_button = tk.Button(text = "Login", font = ("arial", 12 ), padx = 30, pady= 4)
+    login_button = tk.Button(text = "Login", font = ("arial", 12 ), padx = 30, pady= 4, command = login)
     login_button.place(x = 365 , y = 165 )
 
     Signup_button = tk.Button(text = "Sign Up", font = ("arial", 12 ), padx = 30, pady= 4, command = register_widget)
     Signup_button.place(x = 355 , y = 215)
 
-##--------------------------------------------------
 
 def register_widget():
     clear_widget()
@@ -131,7 +149,25 @@ root = tk.Tk()
 root.title("Login or Sign Up")
 root.geometry("800x400")
 
+def dashboard_widget():
+    clear_widget()
+    root.grid_rowconfigure(0, weight = 1)
+    root.grid_rowconfigure(1, weight = 10)
+    root.grid_columnconfigure(0, weight =1)
+    root.grid_columnconfigure(1, weight =6)
+
+    one = tk.Frame(bg = "red")
+    one.grid(row = 0 , column = 0, columnspan = 2, sticky = "news" )
+    two = tk.Frame(bg =  "blue")
+    two.grid(row =0, column = 1, sticky = "news")
+    three = tk.Frame(bg = "yellow")
+    three.grid(row = 1, column = 0, sticky = "news")
+    four = tk.Frame(bg = "Green")
+    four.grid(row = 1, column = 1, sticky = "news")
+
+    button_box = tk.Button(three, text = "click")
+    button_box.pack()
+
 login_widget()
-# register_widget()
 
 root.mainloop()
