@@ -10,7 +10,7 @@ while True:
 
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
-    cv.imshow("Camera", gray)
+    cv.imshow("Camera", frame)
 
     if cv.waitKey(1) == ord('q'):
         break
