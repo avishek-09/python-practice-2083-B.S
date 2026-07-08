@@ -20,6 +20,7 @@ Currently Studied:
 - CSV files handling
 - OOP (while few topics are still left to cover)
 - Tkinter
+- Pygame with making Snake Game
 
 Leraning from:
 - Bro Code Youtube Channel
