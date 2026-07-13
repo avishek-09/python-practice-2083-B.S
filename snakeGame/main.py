@@ -51,9 +51,17 @@ while playing:
 
     pygame.draw.circle(screen, (255,200,0), [food_x,food_y], 8)
 
+    snake_rect = pygame.Rect(x, y, width, height)
+    food_circle = pygame.Rect(food_x, food_y, food_w, food_h)
+
+    if snake_rect.colliderect(food_circle):
+        score += 10 
+        food_x = randint(40,750)
+        food_y = randint(50,450)
+
     text = font.render(f"Score: {score}", True, (0, 128, 0))
 
-    screen.blit(text, [750,10])
+    screen.blit(text, [725,10])
 
     pygame.display.update()
 
