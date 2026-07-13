@@ -10,6 +10,10 @@ pygame.display.set_caption("Snake Game")
 font = pygame.font.SysFont("comicsansms", 15) 
 mid_font = pygame.font.SysFont("comicsansms", 40)
 larger_font = pygame.font.SysFont("comicsansms", 80)
+restart_image = pygame.image.load("assest/restart.png")
+restart_image = pygame.transform.scale(restart_image, (50,50))
+restart_rectangle = pygame.Rect(370,350,50,50)
+ 
 
 
 ## pause the game
@@ -27,21 +31,24 @@ def handle_pause():
                     
 
 ## variables to define position, speed, fps and score
-x = 20 
-y = 20 
-speed = 5
-velocity_x = 0
-velocity_y = 0
-width = 25
-height = 25
 fps = 30
-food_x = randint(40,750)
-food_y = randint(50,450)
-food_h = 10
-food_w = 10
-score = 0
+def game_init():
+    global x,y,speed, velocity_x, velocity_y, width, height, food_x, food_y, food_h, food_w, score, fps
+    fps = 30
+    x = 20 
+    y = 20 
+    speed = 5
+    velocity_x = 0
+    velocity_y = 0
+    width = 25
+    height = 25
+    food_x = randint(40,750)
+    food_y = randint(50,450)
+    food_h = 10
+    food_w = 10
+    score = 0
 
-
+game_init()
 ## actual logic behind the whole game working process
 playing = True
 game_over = False
@@ -67,6 +74,11 @@ while playing:
             elif event.key == pygame.K_DOWN :
                 velocity_y = speed
                 velocity_x = 0
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if game_over:
+                if restart_rectangle.collidepoint(event.pos):
+                    game_over = False
+                    game_init()
             
 
         text = font.render(f"Score: {score}", True, (0, 128, 0))
@@ -77,15 +89,19 @@ while playing:
         x += velocity_x
         y += velocity_y
 
+        ## logic to refresh the display
         screen.fill((0,0,0))
 
+        ## config for the snake
         pygame.draw.rect(screen, (0,255,100), [x,y,width,height])
 
+        ## config for the snake food
         pygame.draw.circle(screen, (255,200,0), [food_x,food_y], 8)
 
         snake_rect = pygame.Rect(x, y, width, height)
         food_circle = pygame.Rect(food_x, food_y, food_w, food_h)
 
+        ## logic behind eating the food
         if snake_rect.colliderect(food_circle):
             score += 10 
             fps += 3
@@ -93,13 +109,15 @@ while playing:
             food_y = randint(50,450)
 
         
-
+        ## logic behind the game over
         if x<5 or x>770 or y<5 or y>470:
             game_over = True
             over = larger_font.render("Game Over", True, (255, 0, 0))
             screen.blit(over, [200,160])
             text = mid_font.render(f"Score: {score}", True, (0, 128, 0))
             screen.blit(text, [310,270])
+            screen.blit(restart_image, [370,350])
+
 
             
 
