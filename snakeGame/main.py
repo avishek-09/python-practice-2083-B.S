@@ -33,7 +33,7 @@ def handle_pause():
 ## variables to define position, speed, fps and score
 fps = 30
 def game_init():
-    global x,y,speed, velocity_x, velocity_y, width, height, food_x, food_y, food_h, food_w, score, fps
+    global x,y,speed, velocity_x, velocity_y, width, height, food_x, food_y, food_h, food_w, score, fps, snake_list, snake_length
     fps = 30
     x = 20 
     y = 20 
@@ -47,12 +47,15 @@ def game_init():
     food_h = 10
     food_w = 10
     score = 0
+    snake_list = []
+    snake_length = 1
 
 game_init()
 ## actual logic behind the whole game working process
 playing = True
 game_over = False
 while playing:
+    pygame.mixer.Sound("assest/music.mp3").play()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             playing = False
@@ -63,15 +66,19 @@ while playing:
             elif event.key == pygame.K_p:
                 handle_pause()
             elif event.key == pygame.K_RIGHT:
+                pygame.mixer.Sound("assest/move.mp3").play()
                 velocity_x = speed
                 velocity_y = 0
             elif event.key == pygame.K_LEFT:
+                pygame.mixer.Sound("assest/move.mp3").play()
                 velocity_x = -speed
                 velocity_y = 0
             elif event.key == pygame.K_UP:
+                pygame.mixer.Sound("assest/move.mp3").play()
                 velocity_y = - speed
                 velocity_x = 0
             elif event.key == pygame.K_DOWN :
+                pygame.mixer.Sound("assest/move.mp3").play()
                 velocity_y = speed
                 velocity_x = 0
         elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -80,20 +87,21 @@ while playing:
                     game_over = False
                     game_init()
             
-
-        text = font.render(f"Score: {score}", True, (0, 128, 0))
-        screen.blit(text, [720,10])
-
     if not game_over: 
         ## logic behind snake moving
         x += velocity_x
         y += velocity_y
+        head = [x, y]
+        snake_list.append(head)
+        if len(snake_list) > snake_length:
+            del snake_list[0]
 
         ## logic to refresh the display
         screen.fill((0,0,0))
 
         ## config for the snake
-        pygame.draw.rect(screen, (0,255,100), [x,y,width,height])
+        for body in snake_list:
+            pygame.draw.rect(screen, (0,255,100), [body[0],body[1],width,height])
 
         ## config for the snake food
         pygame.draw.circle(screen, (255,200,0), [food_x,food_y], 8)
@@ -103,23 +111,23 @@ while playing:
 
         ## logic behind eating the food
         if snake_rect.colliderect(food_circle):
+            pygame.mixer.Sound("assest/food.mp3").play()
             score += 10 
             fps += 3
             food_x = randint(40,750)
             food_y = randint(50,450)
+            snake_length += 1
 
         
         ## logic behind the game over
         if x<5 or x>770 or y<5 or y>470:
             game_over = True
+            pygame.mixer.Sound("assest/gameover.mp3").play()
             over = larger_font.render("Game Over", True, (255, 0, 0))
             screen.blit(over, [200,160])
             text = mid_font.render(f"Score: {score}", True, (0, 128, 0))
             screen.blit(text, [310,270])
             screen.blit(restart_image, [370,350])
-
-
-            
 
     text = font.render(f"Score: {score}", True, (0, 128, 0))
     screen.blit(text, [725,10])
