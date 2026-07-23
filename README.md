@@ -21,6 +21,7 @@ Currently Studied:
 - OOP (while few topics are still left to cover)
 - Tkinter
 - Pygame with making Snake Game
+- Constructor and Destroctor
 
 Leraning from:
 - Bro Code Youtube Channel
